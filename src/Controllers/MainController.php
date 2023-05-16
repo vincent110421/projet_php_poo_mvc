@@ -185,6 +185,22 @@ class MainController{
             require VIEWS_DIR . '/logout.php';
         }
 
+
+    /**
+     * Contrôleur de la page profil
+     *
+     */
+    public function profil(): void
+    {
+        if(!isConnected()){
+            header('Location:' . PUBLIC_PATH . '/connexion/');
+            die();
+        }
+        // Charge la vue "profil.php"
+        require VIEWS_DIR . '/profil.php';
+    }
+
+
     /**
      * Contrôleur de la page 404
      */

@@ -26,7 +26,7 @@
 
                     <?php
                 } else {
-                    
+
                 ?>
                 <!-- Lien vers la page de connexion -->
                 <li class="nav-item">
@@ -35,6 +35,10 @@
                 <li class="nav-item">
                     <a class="nav-link <?= (ROUTE == '/creer-un-compte/') ? 'active' : '' ?>" href="<?=PUBLIC_PATH?>/creer-un-compte/">Inscription</a>
                 </li>
+                    </li> <!-- Lien vers la page de profil -->
+                    <li class="nav-item">
+                        <a class="nav-link <?= (ROUTE == '/mon-profil/') ? 'active' : '' ?>" href="<?=PUBLIC_PATH?>/mon-profil/">Mon Profil</a>
+                    </li>
                 <?php
 
                 }
