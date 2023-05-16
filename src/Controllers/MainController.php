@@ -63,7 +63,17 @@ class MainController{
             // Si pas d'erreurs
             if(!isset($errors)){
 
-                
+                // Instanciation du manager des users
+                $userManager = new UserManager();
+
+                // Vérification si l'email est déjà prise
+                $checkUSer = $userManager->findOneBy('email',$_POST['email']);
+
+                if(!empty($checkUSer)){
+                    $errors[] = 'Cette adresse email est déjà utilisée';
+                } else {
+
+
 
                 // Créer un nouvel utilisateur
                 $newUserToInsert = new User();
@@ -78,8 +88,7 @@ class MainController{
                     ->setLastname($_POST['lastname'] )
                     ->setRegisterDate($today);
 
-                // Instanciation du manager des users
-                $userManager = new UserManager();
+
 
                 // On demande au manager de sauvegarder notre nouvel utilisateur dans la BDD
                 $userManager->save ($newUserToInsert );
@@ -87,7 +96,7 @@ class MainController{
                 // Message de succès
                 $success = 'Votre compte a bien été créé !';
 
-
+                }
             }
 
         }
