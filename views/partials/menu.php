@@ -14,7 +14,20 @@
                     <a class="nav-link <?= (ROUTE == '/') ? 'active' : '' ?>" href="<?=PUBLIC_PATH?>/">Accueil</a>
                 </li>
 
-                <!-- TODO: Penser à masquer ce bouton si l'utilisateur est connecté -->
+                <?php
+
+                // Si l'utilisateur est connecté
+                if(isConnected()){
+                    ?>
+
+                <li class="nav-item">
+                    <a class="nav-link <?= (ROUTE == '/deconnexion/') ? 'active' : '' ?>" href="<?=PUBLIC_PATH?>/deconnexion/">Deconnexion</a>
+                </li> <!-- Lien vers la page de déconnexion -->
+
+                    <?php
+                } else {
+                    
+                ?>
                 <!-- Lien vers la page de connexion -->
                 <li class="nav-item">
                     <a class="nav-link <?= (ROUTE == '/connexion/') ? 'active' : '' ?>" href="<?=PUBLIC_PATH?>/connexion/">Connexion</a>
@@ -22,10 +35,10 @@
                 <li class="nav-item">
                     <a class="nav-link <?= (ROUTE == '/creer-un-compte/') ? 'active' : '' ?>" href="<?=PUBLIC_PATH?>/creer-un-compte/">Inscription</a>
                 </li>
+                <?php
 
-                <li class="nav-item">
-                    <a class="nav-link <?= (ROUTE == '/deconnexion/') ? 'active' : '' ?>" href="<?=PUBLIC_PATH?>/deconnexion/">Deconnexion</a>
-                </li> <!-- Lien vers la page de déconnexion -->
+                }
+                ?>
 
             </ul>
         </div>
