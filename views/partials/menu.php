@@ -19,27 +19,40 @@
                 // Si l'utilisateur est connecté
                 if(isConnected()){
                     ?>
-
-                <li class="nav-item">
-                    <a class="nav-link <?= (ROUTE == '/deconnexion/') ? 'active' : '' ?>" href="<?=PUBLIC_PATH?>/deconnexion/">Deconnexion</a>
-                </li> <!-- Lien vers la page de déconnexion -->
+                    </li> <!-- Lien vers la page de profil -->
+                    <li class="nav-item">
+                        <a class="nav-link <?= (ROUTE == '/mon-profil/') ? 'active' : '' ?>" href="<?=PUBLIC_PATH?>/mon-profil/">Mon Profil</a>
+                    </li>
+                    <!-- Lien vers la page d'ajout de fruit -->
+                    <li class="nav-item">
+                        <a class="nav-link <?= (ROUTE == '/fruits/ajouter-un-fruit/') ? 'active' : '' ?>" href="<?=PUBLIC_PATH?>/fruits/ajouter-un-fruit/">Ajouter un fruit</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link <?= (ROUTE == '/deconnexion/') ? 'active' : '' ?>" href="<?=PUBLIC_PATH?>/deconnexion/">Deconnexion</a>
+                    </li> <!-- Lien vers la page de déconnexion -->
 
                     <?php
                 } else {
 
                 ?>
-                <!-- Lien vers la page de connexion -->
+
+
+
+
+
+
+                          <!-- Lien vers la page de connexion -->
                 <li class="nav-item">
                     <a class="nav-link <?= (ROUTE == '/connexion/') ? 'active' : '' ?>" href="<?=PUBLIC_PATH?>/connexion/">Connexion</a>
                 </li> <!-- Lien vers la page d'inscription -->
                 <li class="nav-item">
                     <a class="nav-link <?= (ROUTE == '/creer-un-compte/') ? 'active' : '' ?>" href="<?=PUBLIC_PATH?>/creer-un-compte/">Inscription</a>
                 </li>
-                    </li> <!-- Lien vers la page de profil -->
-                    <li class="nav-item">
-                        <a class="nav-link <?= (ROUTE == '/mon-profil/') ? 'active' : '' ?>" href="<?=PUBLIC_PATH?>/mon-profil/">Mon Profil</a>
-                    </li>
-                <?php
+
+
+
+
+                    <?php
 
                 }
                 ?>
