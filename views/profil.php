@@ -48,7 +48,7 @@
                 <tr>
                     <td class="fw-bold w-50">Date d'inscription :</td>
                     <!-- Pas besoin de htmlspecialchars car il s'agit d'un objet "Datetime" qui ne peut être qu'une date valide -->
-                    <td><?=$_SESSION['user']->getRegisterDate()->format('d/m/Y à H:i:s')?>/td>
+                    <td><?=$_SESSION['user']->getRegisterDate()->format('d/m/Y à H:i:s')?></td>
                 </tr>
 
                 </tbody>
