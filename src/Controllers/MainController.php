@@ -305,6 +305,13 @@ class MainController
      */
     public function fruitDetails(): void
     {
+        // Vérifiacation que l'id dans l'url existe
+        if(!isset($_GET['id'])){
+            $this->page404();
+            die();
+        }
+
+
         // Récupération du manager des fruits
         $fruitManager = new FruitManager();
 
