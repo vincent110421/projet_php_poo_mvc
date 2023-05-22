@@ -168,6 +168,34 @@ class FruitManager{
  */
     public function delete(Fruit $fruitToDelete): void
     {
+
+
+        /**
+         * Méthode permettant de modifier un fruit déjà existant en base de données (actualise)
+         */
+        public function update(Fruit $fruitToUpdate): void
+    {
+
+        // Requête SQL préparée pour mettre à jour le fruit dont l'id est le même que celui dans $fruitToUpdate
+        $editFruit = $this->db->prepare('UPDATE fruit SET name = ?, color = ?, origin = ?, price_per_kilo = ?, user_id = ?, description = ? WHERE id = ?');
+
+        // Execution de la requête en envoyant les valeurs
+        $editFruit->execute([
+            $fruitToUpdate->getName(),
+            $fruitToUpdate->getColor(),
+            $fruitToUpdate->getOrigin(),
+            $fruitToUpdate->getPricePerKilo(),
+            $fruitToUpdate->getUser()->getId(),
+            $fruitToUpdate->getDescription(),
+            $fruitToUpdate->getId(),
+        ]);
+
+        // Fermeture de la requête
+        $editFruit->closeCursor();
+
+    }
+
+
         // Requête SQL préparée pour supprimer le fruit dont l'id correspond à celui du fruit dans l'objet
         $deleteFruit = $this->db->prepare('DELETE FROM fruit WHERE id = ?');
 
