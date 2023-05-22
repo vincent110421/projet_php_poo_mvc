@@ -60,7 +60,7 @@
                                 <td><?=ucfirst(htmlspecialchars($fruit->getColor() ) )?></td>
                                 <td><?=ucfirst(htmlspecialchars($fruit->getOrigin() ) )?></td>
                                 <td><?=htmlspecialchars(number_format($fruit->getPricePerKilo(), 2, ',', '' ) ) ?>€</td>
-                                <td><a href="<?= PUBLIC_PATH ?>/fruits/fiche/id=<?= htmlspecialchars($fruit->getId()) ?>">Voir la fiche</a></td>
+                                <td><a href="<?= PUBLIC_PATH ?>/fruits/fiche/?id=<?= htmlspecialchars($fruit->getId()) ?>">Voir la fiche</a></td>
 
                             </tr>
 

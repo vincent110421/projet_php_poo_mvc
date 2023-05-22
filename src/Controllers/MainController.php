@@ -294,10 +294,29 @@ class MainController
         // Récupération de tous les fruits dans la BDD
         $fruits = $fruitManager->findAll();
 
-        dump($fruits);
+
 
         require VIEWS_DIR . '/fruitList.php';
 
+    }
+
+    /**
+     * Contrôleur de la page d'accueil
+     */
+    public function fruitDetails(): void
+    {
+        // Récupération du manager des fruits
+        $fruitManager = new FruitManager();
+
+        // On recupère le fruit donc l'id est stocké dans l'url
+        $fruit = $fruitManager->findOneBy('id', $_GET['id']);
+        // Si aucun fruit n'a été trouvé, on affiche la page 404
+        if(empty($fruit)){
+            $this->page404();
+            die();
+        }
+        // Charge la vue "fruitDetails.php" dans le dossier "views"
+        require VIEWS_DIR . '/fruitDetails.php';
     }
 
     /**
