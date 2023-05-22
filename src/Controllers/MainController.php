@@ -318,13 +318,54 @@ class MainController
         // On recupère le fruit donc l'id est stocké dans l'url
         $fruit = $fruitManager->findOneBy('id', $_GET['id']);
         // Si aucun fruit n'a été trouvé, on affiche la page 404
-        if(empty($fruit)){
+        if(empty($fruitToDelete)){
             $this->page404();
             die();
         }
+
+
+
         // Charge la vue "fruitDetails.php" dans le dossier "views"
         require VIEWS_DIR . '/fruitDetails.php';
     }
+
+    /**
+     * Contrôleur de la page qui supprime un fruit
+     */
+    public function fruitDelete(): void
+    {
+
+        // Redirige l'utilisateur sur la page de connexion s'il n'est pas connecté
+        if(!isConnected()){
+            header('Location: ' . PUBLIC_PATH . '/connexion/');
+            die();
+        }
+
+        // Vérification que l'id dans l'url existe
+        if(!isset($_GET['id'])){
+            $this->page404();
+            die();
+        }
+
+        // Récupération du manager des fruits
+        $fruitManager = new FruitManager();
+
+        // Récupération du fruit dont l'id est stocké dans l'URL
+        $fruitToDelete = $fruitManager->findOneBy('id', $_GET['id']);
+
+        // Si le fruit n'existe pas, erreur 404
+        if(empty($fruitToDelete)){
+            $this->page404();
+            die();
+        }
+
+        // Suppression du fruit
+        $fruitManager->delete($fruitToDelete);
+
+        // Charge la vue "fruitDelete.php" dans le dossier "views"
+        require VIEWS_DIR . '/fruitDelete.php';
+    }
+
 
     /**
      * Contrôleur de la page 404
